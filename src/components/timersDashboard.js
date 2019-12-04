@@ -82,7 +82,7 @@ export class TimersDashboard extends Component {
     render() {
         return(
 
-            <div>
+            <div id="timeCardsContainer">
                 <EditableTimerList timers={this.state.timers}
                                     onFormSubmit={this.handleEditFormSubmit}
                                     updateGlobalTime={this.updateGlobalTime}

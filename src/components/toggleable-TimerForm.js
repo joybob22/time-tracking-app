@@ -34,7 +34,12 @@ export class ToggleableTimerForm extends Component {
     render() {
         
         if(!this.state.newTimerActive) {
-            return(<button onClick={this.changeActiveStatus}>Create New Timer</button>);
+            return(
+            <div>
+                <button className="bigButton" onClick={this.changeActiveStatus}>Create New Timer</button>
+                
+            </div>
+            );
         } else {
             return(<TimerForm onCancel={this.handleFormClose}
                               createTimer={this.props.createTimer}

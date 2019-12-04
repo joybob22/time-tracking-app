@@ -35,14 +35,16 @@ export class Timer extends Component {
         
         
         return(
-            <div>
+            <div className="timerCard">
                 <h1>{this.props.title}</h1>
                 <h3>{this.props.project}</h3>
-                <h1>{this.state.timerTime}</h1>
+                <h1 className="time">{this.state.timerTime}</h1>
                 {/*why does startOrStopTimer get called when its startOrStopTimer() without a click*/}
-                <button onClick={this.startOrStopTimer}>Start/Stop</button>
-                <button onClick={this.props.onEditClick}>Edit</button>
-                <button onClick={this.props.deleteTimer}>Delete</button>
+                <button className="bigButton" onClick={this.startOrStopTimer}>Start/Stop</button>
+                <div className="buttonsContainer">
+                    <button className="smallButton" onClick={this.props.onEditClick}>Edit</button>
+                    <button className="smallButton" onClick={this.props.deleteTimer}>Delete</button>
+                </div>
             </div>
             
         );
