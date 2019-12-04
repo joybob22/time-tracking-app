@@ -13,14 +13,13 @@ export class TimerForm extends Component {
         this.setState({project: e.target.value})
      };
      handleSubmit = () => {
-         this.props.createTimer({
-             title: this.state.title,
-             project: this.state.project,
-             id: this.props.id
-            }
-         )
-         this.props.onCancel();
+         this.props.onFormSubmit({
+            id: this.props.id,
+            title: this.state.title,
+            project: this.state.project
+         });
      }
+     
     render() {
         return(
             <div>

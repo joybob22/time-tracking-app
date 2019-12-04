@@ -13,6 +13,50 @@ export class TimersDashboard extends Component {
         timers: this.state.timers.concat(t),
     });
   };
+    
+    handleEditFormSubmit = (attrs) => {
+        this.updateTimer(attrs);
+    }
+
+    updateTimer = (attrs) => {
+        this.setState({
+            timers: this.state.timers.map((timer) => {
+                if(timer.id === attrs.id) {
+                    return Object.assign({}, timer, {
+                        title: attrs.title,
+                        project: attrs.project
+                    });
+                } else {
+                    return timer;
+                }
+            })
+        })
+    }
+
+    updateGlobalTime = (id, time) => {
+        this.setState({
+            timers: this.state.timers.map((timer) => {
+                if(timer.id === id) {
+                    return Object.assign({}, timer, {
+                        time: time
+                    });
+                } else {
+                    return timer;
+                }
+            })
+        });
+    }
+
+    handleCreateFormSubmit = (timer) => {
+        this.createTimer(timer);
+    }
+
+    deleteTimer = (id) => {
+        this.setState({
+            timers: this.state.timers.filter(t => t.id !== id),
+          });
+    }
+
     state = {
         timers: [
             {
@@ -39,9 +83,13 @@ export class TimersDashboard extends Component {
         return(
 
             <div>
-                <EditableTimerList timers={this.state.timers}/>
+                <EditableTimerList timers={this.state.timers}
+                                    onFormSubmit={this.handleEditFormSubmit}
+                                    updateGlobalTime={this.updateGlobalTime}
+                                    deleteTimer={this.deleteTimer}/>
                 <ToggleableTimerForm isOpen={false}
-                                     createTimer={this.createTimer}/>
+                                     createTimer={this.createTimer}
+                                     onFormSubmit={this.handleCreateFormSubmit}/>
             </div>
         );
     }

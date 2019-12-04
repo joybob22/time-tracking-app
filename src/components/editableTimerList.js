@@ -15,7 +15,10 @@ export class EditableTimerList extends Component {
                 runningSince={timer.runningSince} 
                 time={timer.time}
                 edit={false}
-                createTimer={timer.createTimer}/>
+                createTimer={timer.createTimer}
+                onFormSubmit={this.props.onFormSubmit}
+                updateGlobalTime={this.props.updateGlobalTime}
+                deleteTimer={this.props.deleteTimer}/>
         ))
         return(
             <div>
